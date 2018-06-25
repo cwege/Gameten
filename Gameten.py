@@ -1,5 +1,6 @@
 # Gameten-Simulation
 # MBS Digitalwerkstatt
+# This code is under GPLv2
 
 #import random
 import pygame, sys
