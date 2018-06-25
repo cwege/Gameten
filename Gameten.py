@@ -1,5 +1,6 @@
 # Gameten-Simulation
 # MBS Digitalwerkstatt
+# Dieses Programm steht unter der Lizenz GPLv2
 
 #import random
 import pygame, sys
