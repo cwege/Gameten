@@ -20,7 +20,8 @@ BLACK = (0,0,0)
 WIDTH = 800
 HEIGHT = 600
 
-gamet_pos = [WIDTH/2, HEIGHT/2]
+gamet_pos = [WIDTH/4, HEIGHT/2]
+gamet_pos2 = [WIDTH/2, HEIGHT/4]
 
 #canvas declaration
 window = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
@@ -33,9 +34,13 @@ while True:
 
     gamet_pos[0] = gamet_pos[0] + randint(-5, 5)
     gamet_pos[1] = gamet_pos[1] + randint(-5, 5)
+    gamet_pos2[0] = gamet_pos2[0] + randint(-5, 5)
+    gamet_pos2[1] = gamet_pos2[1] + randint(-5, 5)
 
-    pygame.draw.circle(window, WHITE,
+    pygame.draw.circle(window, GREEN,
                        [int(gamet_pos[0]), int(gamet_pos[1])], 20, 0)
+    pygame.draw.circle(window, RED,
+                       [int(gamet_pos2[0]), int(gamet_pos2[1])], 10, 0)
 
     for event in pygame.event.get():
 
