@@ -17,30 +17,42 @@ GREEN = (0,255,0)
 BLACK = (0,0,0)
 
 #globals
-WIDTH = 800
-HEIGHT = 600
+WIDTH = 200
+HEIGHT = 150
 
-gamet_pos = [WIDTH/4, HEIGHT/2]
-gamet_pos2 = [WIDTH/2, HEIGHT/4]
+gamet_pos = [[WIDTH/4, HEIGHT/2],[WIDTH/2, HEIGHT/4]]
 
 #canvas declaration
 window = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
 pygame.display.set_caption('Gameten Simulation')
+
+def update_position(index, delta):
+    gamet_pos[index][0] = gamet_pos[index][0] + randint(-delta, delta)
+    gamet_pos[index][1] = gamet_pos[index][1] + randint(-delta, delta)
+    if gamet_pos[index][0] < 0:
+        gamet_pos[index][0] = -gamet_pos[index][0]
+    if gamet_pos[index][0] > WIDTH:
+        gamet_pos[index][0] = 2*WIDTH-gamet_pos[index][0]
+    if gamet_pos[index][1] < 0:
+        gamet_pos[index][1] = -gamet_pos[index][1]
+    if gamet_pos[index][1] > HEIGHT:
+        gamet_pos[index][1] = 2*HEIGHT-gamet_pos[index][1]
+    
+
+def draw_gamet(color, gamet, size):
+    pygame.draw.circle(window, color,
+                       [int( gamet_pos[gamet][0]), int(gamet_pos[gamet][1])], size, 0)
 
 #main game loop
 while True:
     
     window.fill(BLACK)
 
-    gamet_pos[0] = gamet_pos[0] + randint(-5, 5)
-    gamet_pos[1] = gamet_pos[1] + randint(-5, 5)
-    gamet_pos2[0] = gamet_pos2[0] + randint(-5, 5)
-    gamet_pos2[1] = gamet_pos2[1] + randint(-5, 5)
+    update_position(0, 5)
+    update_position(1, 30)
 
-    pygame.draw.circle(window, GREEN,
-                       [int(gamet_pos[0]), int(gamet_pos[1])], 20, 0)
-    pygame.draw.circle(window, RED,
-                       [int(gamet_pos2[0]), int(gamet_pos2[1])], 10, 0)
+    draw_gamet(GREEN, 0, 20)    
+    draw_gamet(RED, 1, 10)    
 
     for event in pygame.event.get():
 
