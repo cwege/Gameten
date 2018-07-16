@@ -6,6 +6,7 @@
 import pygame, sys
 from pygame.locals import *
 from random import *
+from math import *
 
 pygame.init()
 fps = pygame.time.Clock()
@@ -17,10 +18,11 @@ GREEN = (0,255,0)
 BLACK = (0,0,0)
 
 #globals
-WIDTH = 200
-HEIGHT = 150
+WIDTH = 400
+HEIGHT = 300
 
-gamet_pos = [[WIDTH/4, HEIGHT/2],[WIDTH/2, HEIGHT/4]]
+gamet_pos = [[WIDTH/4, HEIGHT/2, 20],
+             [WIDTH/2, HEIGHT/4, 10]]
 
 #canvas declaration
 window = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
@@ -63,3 +65,7 @@ while True:
     pygame.display.update()
     fps.tick(20)
 
+    a = gamet_pos[0][1]-gamet_pos[1][1]
+    b = gamet_pos[1][0]-gamet_pos[0][0]
+    c=sqrt(a*a+b*b)
+    print (c)
