@@ -24,8 +24,9 @@ WIDTH = 400
 HEIGHT = 300
 
 #gamet_pos[[x_pos, y_pos, radius, color, delta]]
-gamet_pos = [[WIDTH/4, HEIGHT/2, 20, GREEN, 5],
-             [WIDTH/2, HEIGHT/4, 10, RED, 30]
+gamet_pos = [[WIDTH/4, HEIGHT/2, 40, GREEN, 5],
+             [WIDTH/2, HEIGHT/4, 10, RED, 30],
+             [WIDTH/2, HEIGHT/4, 10, BLUE, 30]
             ]
 
 print ("len: ", len(gamet_pos))
@@ -73,7 +74,10 @@ while True:
     pygame.display.update()
     fps.tick(20)
 
-    a = gamet_pos[0][1]-gamet_pos[1][1]
-    b = gamet_pos[1][0]-gamet_pos[0][0]
-    c=sqrt(a*a+b*b)
-    print ("distance: ", c)
+    for i in range(1,len(gamet_pos)):   
+        a = gamet_pos[0][1]-gamet_pos[i][1]
+        b = gamet_pos[i][0]-gamet_pos[0][0]
+        c=int(sqrt(a*a+b*b))
+        print ("distance: 0 to ", i, " : ", c)
+        if c < gamet_pos[0][2] + gamet_pos[i][2]:
+            exit_game()
