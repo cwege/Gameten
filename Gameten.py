@@ -7,9 +7,17 @@ import pygame, sys
 from pygame.locals import *
 from random import *
 from math import *
+from datetime import datetime
+
+time_start = datetime.now()
+time_elapsed = datetime.now() - time_start
 
 pygame.init()
 fps = pygame.time.Clock()
+
+pygame.font.init() # you have to call this at the start, 
+                   # if you want to use this module.
+myfont = pygame.font.SysFont('Comic Sans MS', 20)
 
 #colors
 WHITE = (255,255,255)
@@ -56,6 +64,8 @@ def draw_gamets():
                            [int( gamet_pos[gamet][0]), int(gamet_pos[gamet][1])], int(gamet_pos[gamet][2]), 0)
 
 def exit_game():
+    time_elapsed = datetime.now() - time_start
+    print("time elapsed: ", time_elapsed)    
     pygame.quit()
     sys.exit()
 
@@ -63,6 +73,9 @@ def exit_game():
 #main game loop
 while True:
     window.fill(BLACK)
+    time_elapsed = datetime.now() - time_start
+    textsurface = myfont.render(str(time_elapsed), False, WHITE)
+    window.blit(textsurface,(0,0))
     update_positions()
 
     draw_gamets()    
