@@ -25,6 +25,8 @@ RED = (255,0,0)
 GREEN = (0,255,0)
 BLACK = (0,0,0)
 BLUE = (0,0,255)
+YELLOW = (255,255,0)
+GREY = (100,100,100)
 
 
 #globals
@@ -34,6 +36,8 @@ HEIGHT = 300
 #gamet_pos[[x_pos, y_pos, radius, color, delta]]
 gamet_pos = [[WIDTH/4, HEIGHT/2, 40, GREEN, 5],
              [WIDTH/2, HEIGHT/4, 10, RED, 30],
+             [WIDTH/2, HEIGHT/4, 10, YELLOW, 30],
+             [WIDTH/2, HEIGHT/4, 10, GREY, 30],
              [WIDTH/2, HEIGHT/4, 10, BLUE, 30]
             ]
 
@@ -92,5 +96,5 @@ while True:
         b = gamet_pos[i][0]-gamet_pos[0][0]
         c=int(sqrt(a*a+b*b))
         print ("distance: 0 to ", i, " : ", c)
-        if c < gamet_pos[0][2] + gamet_pos[i][2]:
-            exit_game()
+#        if c < gamet_pos[0][2] + gamet_pos[i][2]:
+#            exit_game()
